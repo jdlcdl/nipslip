@@ -1,0 +1,9 @@
+{
+    "pubkey": "807dfcdec96b0d114e1862349d45e38d5aad797e560d8c64ceeb04c32a44caca",
+    "npub": "npub1sp7lehkfdvx3znscvg6f630r34d267t72cxccexwavzvx2jyet9qq97nsy",
+    "metadata": {
+        "name": "Your Name",
+        "about": "Something About You",
+        "picture": "https://www.yourdomain.com/path/to/your/picture.png"
+    }
+}

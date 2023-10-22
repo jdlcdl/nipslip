@@ -1,0 +1,4 @@
+.*.swp
+__pycache__/
+private.json
+public.json
