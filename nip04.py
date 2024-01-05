@@ -46,21 +46,21 @@ if __name__ == '__main__':
     alice = mock.prvkey('alice')
     bob = mock.prvkey('bob')
 
-    # embit added ecdh as of feb 11 2023
-    #def get_shared_key(prv32, pub32):
-    #    import secp256k1
-    #    assert type(prv32) == bytes and len(prv32) == 32
-    #    assert type(pub32) == bytes and len(pub32) == 32
-    #    pub = secp256k1.PublicKey(b'\x02' + pub32, True)
-    #    shared = pub.ecdh(prv32)
-    #    return shared
-    #
-    #shared_alice = get_shared_key(alice.serialize(), bob.get_public_key().bytes())
-    #shared_bob = get_shared_key(bob.serialize(), alice.get_public_key().bytes())
-    #assert shared_alice == shared_bob
-    shared_alice = alice.ecdh(bob.get_public_key())
-    shared_bob = bob.ecdh(alice.get_public_key())
+    def get_shared_key(prv32, pub32):
+        import secp256k1
+        assert type(prv32) == bytes and len(prv32) == 32
+        assert type(pub32) == bytes and len(pub32) == 32
+        pub = secp256k1.PublicKey(b'\x02' + pub32, True)
+        shared = pub.ecdh(prv32)
+        return shared
+
+    shared_alice = get_shared_key(alice.serialize(), bob.get_public_key().bytes())
+    shared_bob = get_shared_key(bob.serialize(), alice.get_public_key().bytes())
     assert shared_alice == shared_bob
+    # when available in embit (added ecdh as of feb 11 2023)
+    #shared_alice = alice.ecdh(bob.get_public_key())
+    #shared_bob = bob.ecdh(alice.get_public_key())
+    #assert shared_alice == shared_bob
 
     # back to public
     alice = alice.get_public_key()
