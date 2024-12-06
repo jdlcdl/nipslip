@@ -48,7 +48,12 @@ if __name__ == '__main__':
              ptags=[pubkey.bytes()], 
              since=time.time()-60*60*24*7,
              limit=10, 
-        )
+        ),
+        "wot_hourly": nip01.Filters(
+             kinds=[2,3],
+             since=time.time()-60*60,
+             limit=100,
+        ),
     }
     print(output.show_subscription(subscription, 
         [x for x in my_filters.values()]

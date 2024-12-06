@@ -156,7 +156,7 @@ class Filters:
     ):
         self.ids = [bytes(x) for x in ids] if type(ids) == list else []
         self.authors = [bytes(x) for x in authors] if type(authors) == list else []
-        self.kinds = [validated(x) for x in kinds] if type(kinds) == list else []
+        self.kinds = [validated_kind(x) for x in kinds] if type(kinds) == list else []
         self.etags = [validated_event_id(x) for x in etags] if type(etags) == list else []
         self.ptags = [validated_pubkey(x).bytes() for x in ptags] if type(ptags) == list else []
         self.since = int(since) if since else None
